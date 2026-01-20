@@ -1,0 +1,31 @@
+export default function Input({
+  label,
+  type = "text",
+  placeholder,
+}) {
+  return (
+    <div>
+      <label className="block text-xs text-textMuted mb-2">
+        {label}
+      </label>
+
+      <input
+        type={type}
+        placeholder={placeholder}
+        className="
+          w-full
+          h-12
+          px-4
+          rounded-field
+          bg-inputBg
+          text-sm
+          text-textPrimary
+          placeholder-textMuted
+          focus:outline-none
+          focus:ring-2
+          focus:ring-panel
+        "
+      />
+    </div>
+  );
+}
