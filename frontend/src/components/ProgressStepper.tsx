@@ -1,4 +1,10 @@
-export default function ProgressStepper({ currentStep = 1 }) {
+interface ProgressStepperProps {
+  currentStep?: number;
+}
+
+export default function ProgressStepper({
+  currentStep = 1,
+}: ProgressStepperProps) {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
       <Step number={1} active={currentStep >= 1} />
@@ -10,7 +16,14 @@ export default function ProgressStepper({ currentStep = 1 }) {
   );
 }
 
-function Step({ number, active }) {
+/* ---------- Step ---------- */
+
+interface StepProps {
+  number: number;
+  active: boolean;
+}
+
+function Step({ number, active }: StepProps) {
   return (
     <div
       style={{
@@ -31,7 +44,13 @@ function Step({ number, active }) {
   );
 }
 
-function Line({ active }) {
+/* ---------- Line ---------- */
+
+interface LineProps {
+  active: boolean;
+}
+
+function Line({ active }: LineProps) {
   return (
     <div
       style={{

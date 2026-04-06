@@ -1,7 +1,21 @@
 import { useState } from "react";
 
-export default function PasswordInput({ label, placeholder }) {
-  const [show, setShow] = useState(false);
+interface PasswordInputProps {
+  label: string;
+  placeholder?: string;
+  value?: string;
+  autoComplete?: string;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+}
+
+export default function PasswordInput({
+  label,
+  placeholder,
+  value,
+  autoComplete,
+  onChange,
+}: PasswordInputProps) {
+  const [show, setShow] = useState<boolean>(false);
 
   return (
     <div className="space-y-2">
@@ -15,6 +29,9 @@ export default function PasswordInput({ label, placeholder }) {
         <input
           type={show ? "text" : "password"}
           placeholder={placeholder}
+          value={value}
+          autoComplete={autoComplete}
+          onChange={onChange}
           className="
             w-full h-[44px]
             rounded-md
@@ -25,13 +42,15 @@ export default function PasswordInput({ label, placeholder }) {
           "
         />
 
-        {/* Toggle icon */}
+        {/* Toggle button */}
         <button
           type="button"
-          onClick={() => setShow(!show)}
+          onClick={() => setShow((prev) => !prev)}
           className="absolute right-3 top-1/2 -translate-y-1/2 text-textMuted"
         >
-          <span>show</span>
+          <span className="text-xs">
+            {show ? "hide" : "show"}
+          </span>
         </button>
       </div>
     </div>

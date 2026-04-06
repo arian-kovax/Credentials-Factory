@@ -3,6 +3,7 @@ interface InputProps {
   type?: React.HTMLInputTypeAttribute;
   placeholder?: string;
   value?: string;
+  autoComplete?: string;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
@@ -11,6 +12,7 @@ export default function Input({
   type = "text",
   placeholder,
   value,
+  autoComplete,
   onChange,
 }: InputProps) {
   return (
@@ -23,6 +25,7 @@ export default function Input({
         type={type}
         placeholder={placeholder}
         value={value}
+        autoComplete={autoComplete}
         onChange={onChange}
         className="
           w-full
